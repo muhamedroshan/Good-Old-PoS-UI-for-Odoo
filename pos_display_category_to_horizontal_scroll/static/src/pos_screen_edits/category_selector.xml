@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_display_category_to_horizontal_scroll.CategorySelector" t-inherit="point_of_sale.CategorySelector" t-inherit-mode="extension">
+        <xpath expr="//div[1]" position="replace">
+            <div class="category-scroll-wrapper w-100" style="overflow: hidden; max-width: 100%; min-width: 0; contain: inline-size;">
+                <div t-attf-class="{{this.pos.config.show_category_images ? 'category-list-i' : 'product-list'}} custom-category-scroll d-flex flex-nowrap overflow-x-auto gap-2 p-2 w-100 mw-100" style="min-width: 0;">
+                <t t-foreach="this.getCategoriesAndSub()" t-as="category" t-key="category.id">
+                    <button t-on-click="() => this.pos.setSelectedCategory(category.id)"
+                        t-attf-class="o_colorlist_item_color_{{category.color or 'none'}}"
+                        t-att-class="{
+                            'border-0': category.isChildren and !this.isAncestorOrSelected(category),
+                            'opacity-75 border-0': !category.isChildren and !category.isSelected,
+                            'justify-content-center': ui.isSmall
+                        }"
+                        class="category-button-i flex-shrink-0 p-1 btn btn-light d-flex justify-content-around align-items-center rounded-3 gap-1">
+
+                        <div t-if="showCategoryImg(category)" class="overflow-hidden flex-shrink-0 ratio ratio-1x1" style="width:40%;">
+                            <img t-if="category.imgSrc and !ui.isSmall" t-att-src="category.imgSrc"
+                                class="category-img-thumb h-100 rounded-3 object-fit-cover pe-none"
+                                alt="Category"
+                            />
+                        </div>
+                        <div class="line-clamp-3" t-att-class="{'w-100': !showCategoryImg(category)}" t-att-style="{'width: 60%;': showCategoryImg(category)}">
+                            <span t-if="category.name" class="text-center" t-esc="category.name" />
+                        </div>
+                    </button>
+                </t>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</templates>

@@ -1,0 +1,52 @@
+.custom-category-scroll {
+    /* 1. Reset old grid properties and enforce flex layout */
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+
+    /* 2. Fix overflow behavior */
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    /* 3. Adjust height for a single row (optional, but cleaner) */
+    max-height: max-content;
+
+    /* 4. Hide the scrollbar for a cleaner UI */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+
+    @include media-breakpoint-down(md) {
+        max-height: max-content; // Overrides the old 11rem limit
+    }
+}
+
+/* Maintain backward compatibility with old class if needed elsewhere */
+.category-list-i {
+    grid-template-columns: none !important;
+}
+
+.category-button-i {
+    /* Move the min-width here instead of keeping it inline in the XML */
+    min-width: 140px;
+    max-width: 200px;
+    flex-shrink: 0 !important;
+
+    /* Keep your existing properties */
+    --btn-border-color: #{$o-gray-200};
+    border-width: 2px;
+    height: 4rem;
+
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
