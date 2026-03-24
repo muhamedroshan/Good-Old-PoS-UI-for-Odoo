@@ -3,3 +3,12 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+.idea/
+*.swp
+# Python temp files
+__pycache__/
+*.pyc

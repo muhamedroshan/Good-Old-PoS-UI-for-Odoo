@@ -12,13 +12,19 @@
     min-width: 0;
 
     /* 3. Adjust height for a single row (optional, but cleaner) */
-    max-height: max-content;
+    min-height: max-content;
 
     /* 4. Hide the scrollbar for a cleaner UI */
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
     &::-webkit-scrollbar {
         display: none; /* Chrome, Safari, and Opera */
+    }
+
+    /* Fix flexbox right-padding ignored on scroll in some browsers */
+    &::after {
+        content: "";
+        padding-right: 0.5rem;
     }
 
     @include media-breakpoint-down(md) {
@@ -40,7 +46,9 @@
     /* Keep your existing properties */
     --btn-border-color: #{$o-gray-200};
     border-width: 2px;
-    height: 4rem;
+    min-height: 4rem;
+    height: max-content;
+    align-self: stretch;
 
     .line-clamp-3 {
         display: -webkit-box;
