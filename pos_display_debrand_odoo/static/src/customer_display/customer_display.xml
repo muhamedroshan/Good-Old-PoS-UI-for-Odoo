@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_display_debrand_odoo.CustomerDisplay" t-inherit="point_of_sale.CustomerDisplay" t-inherit-mode="extension">
+        <xpath expr="(//OdooLogo)[1]/.." position="replace" />
+        <xpath expr="(//OdooLogo)[1]/.." position="replace" />
+    </t>
+</templates>

@@ -11,10 +11,9 @@ patch(ProductCard.prototype, {
         this.pos = usePos();
     },
     get price() {
-        if(!this.props.product){
+        if (!this.props.product) {
             return ""
         }
-        console.log(this.props.product)
         return this.env.utils.formatCurrency(this.props.product.list_price)
     }
 });

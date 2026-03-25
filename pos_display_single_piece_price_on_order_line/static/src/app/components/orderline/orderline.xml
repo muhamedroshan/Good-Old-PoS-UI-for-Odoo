@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_display_single_piece_price_on_order_line.Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//span[hasclass('qty')]" position="replace">
+            <span class="qty d-inline-block fw-bolder" t-attf-class="{{ vals.isReceipt ? 'pe-2' : 'px-1' }}">
+                <t t-esc="vals.unitPart"/>
+                <small t-if="vals.decimalPart" t-out="vals.decimalPart" class="fw-normal" style="font-size: 85%;" />
+                <t t-if="!vals.isReceipt">
+                    <span class="px-1 fw-normal">x</span>
+                    <t t-esc="line.currencyDisplayPriceUnit"/>
+                </t>
+            </span>
+        </xpath>
+    </t>
+</templates>
