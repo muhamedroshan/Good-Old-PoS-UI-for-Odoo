@@ -13,7 +13,7 @@ LinkedIn: https://www.linkedin.com/company/wedo-technologies/
     'website': "https://www.wedo.om",
     'license': 'LGPL-3',
     'category': 'Point of Sale',
-    'version': '18.0.1.0.0',
+    'version': '19.0.1.0.0',
     'images': ['static/description/banner.png'],
     'depends': ['point_of_sale'],
     'data': [],
